@@ -40,19 +40,19 @@ computer.addEventListener("click", () => {
 
 rock.addEventListener("click", () => {
     console.log(playerOneChoice)
-    computerHeading.innerHTML = findWinner(playerOneChoice, "Rock")
+    computerSubHeading.innerHTML = findWinner(playerOneChoice, "Rock")
     domUpdate("pc")
 })
 
 paper.addEventListener("click", () => {
     console.log(playerOneChoice)
-    computerHeading.innerHTML = findWinner(playerOneChoice, "Paper")
+    computerSubHeading.innerHTML = findWinner(playerOneChoice, "Paper")
     domUpdate("pc")
 })
 
 scissor.addEventListener("click", () => {
     console.log(playerOneChoice)
-    computerHeading.innerHTML = findWinner(playerOneChoice, "Scissor")
+    computerSubHeading.innerHTML = findWinner(playerOneChoice, "Scissor")
     domUpdate("pc")
 })
 
@@ -77,17 +77,17 @@ scissorOne.addEventListener("click", () => {
 
 
 rockTwo.addEventListener("click", () => {
-    heading.innerHTML = findWinner(playerOneChoice, "Rock")
+    subHeading.innerHTML = findWinner(playerOneChoice, "Rock")
     domUpdate("p2")
 })
 
 paperTwo.addEventListener("click", () => {
-    heading.innerHTML = findWinner(playerOneChoice, "Paper")
+    subHeading.innerHTML = findWinner(playerOneChoice, "Paper")
     domUpdate("p2")
 })
 
 scissorTwo.addEventListener("click", () => {
-    heading.innerHTML = findWinner(playerOneChoice, "Scissor")
+    subHeading.innerHTML = findWinner(playerOneChoice, "Scissor")
     domUpdate("p2")
 })
 
@@ -106,15 +106,15 @@ function computerChoice() {
 function findWinner(pcORplayerOne, playerTwo) {
     if (
         pcORplayerOne == playerTwo
-    ) { return "It's a Draw" }
+    ) { return `Player 01 Chose: <span style="color: #FE3E57; font-size: inherit "> ${pcORplayerOne} </span><br>Player 02 Chose: <span style="color: #FE3E57; font-size: inherit "> ${playerTwo} </span> <p style="color: #FE3E57; font-size: inherit; margin-top: 20px ">It's a Draw </p>` }
 
     if (
         (pcORplayerOne == "Rock" && playerTwo == "Paper") ||
         (pcORplayerOne == "Paper" && playerTwo == "Scissor") ||
         (pcORplayerOne == "Scissor" && playerTwo == "Rock")
-    ) { return "Player 02 Win" }
+    ) { return `Player 01 Chose:<span style="color: #FE3E57; font-size: inherit "> ${pcORplayerOne}</span><br>Player 02 Chose: <span style="color: #FE3E57; font-size: inherit ">${playerTwo}</span> <p style="color: #FE3E57; font-size: inherit; margin-top: 20px ">Player 02 Win</p>` }
 
-    return "Player 01 Win"
+    return `Player 01 Chose:<span style="color: #FE3E57; font-size: inherit "> ${pcORplayerOne} </span><br>Player 02 Chose: <span style="color: #FE3E57; font-size: inherit ">${playerTwo}</span><p style="color: #FE3E57; font-size: inherit ; margin-top: 20px">Player 01 Win</p>`
 }
 
 
@@ -124,15 +124,14 @@ function domUpdate(type) {
         btnGroupOne.style.display = "none"
         btnGroupTwo.style.display = "flex"
     } else if (type == "p2") {
-        heading.style.textTransform = "none"
-        subHeading.style.display = "none"
+        heading.style.display = "none"
         btnGroupOne.style.display = "none"
         btnGroupTwo.style.display = "none"
         btnGroup.style.display = "none"
         restartBtn.style.display = "inline-block"
         restartBtn.addEventListener("click", () => location.reload())
-    }else if (type == "pc") {
-        computerSubHeading.style.display = "none"
+    } else if (type == "pc") {
+        computerHeading.style.display = "none"
         heading.style.textTransform = "none"
         subHeading.style.display = "none"
         btnGroupOne.style.display = "none"
