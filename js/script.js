@@ -1,10 +1,19 @@
 let welcome = document.querySelector(".welcome")
 let computer = document.querySelector(".computer")
 let friend = document.querySelector(".friend")
+let computerVersion = document.querySelector(".computerVersion")
 let twoPlayerVersion = document.querySelector(".twoPlayerVersion")
+let computerHeading = document.querySelector(".computerHeading")
+let computerSubHeading = document.querySelector(".computerSubHeading")
+let pcRestartBtn = document.querySelector(".pcRestartBtn")
 let heading = document.querySelector(".heading")
 let subHeading = document.querySelector(".subHeading")
 let restartBtn = document.querySelector("button")
+
+let btnGroup = document.querySelector(".btnGroup")
+let rock = document.querySelector(".rock")
+let paper = document.querySelector(".paper")
+let scissor = document.querySelector(".scissor")
 
 let btnGroupOne = document.querySelector(".btnGroupOne")
 let rockOne = document.querySelector(".rockOne")
@@ -18,62 +27,95 @@ let scissorTwo = document.querySelector(".scissorTwo")
 
 let playerOneChoice;
 
-friend.addEventListener("click",()=>{
+friend.addEventListener("click", () => {
     welcome.style.display = "none"
     twoPlayerVersion.style.display = "flex"
 })
+computer.addEventListener("click", () => {
+    welcome.style.display = "none"
+    computerVersion.style.display = "flex"
+    playerOneChoice = computerChoice()
+})
+
+
+rock.addEventListener("click", () => {
+    console.log(playerOneChoice)
+    computerHeading.innerHTML = findWinner(playerOneChoice, "Rock")
+    domUpdate("pc")
+})
+
+paper.addEventListener("click", () => {
+    console.log(playerOneChoice)
+    computerHeading.innerHTML = findWinner(playerOneChoice, "Paper")
+    domUpdate("pc")
+})
+
+scissor.addEventListener("click", () => {
+    console.log(playerOneChoice)
+    computerHeading.innerHTML = findWinner(playerOneChoice, "Scissor")
+    domUpdate("pc")
+})
+
+
+
 
 rockOne.addEventListener("click", () => {
-    playerOneChoice = 1
+    playerOneChoice = "Rock"
     domUpdate("p1")
 })
 paperOne.addEventListener("click", () => {
-    playerOneChoice = 2
+    playerOneChoice = "Paper"
     domUpdate("p1")
 })
 scissorOne.addEventListener("click", () => {
-    playerOneChoice = 3
+    playerOneChoice = "Scissor"
     domUpdate("p1")
 })
 
+
+
+
+
 rockTwo.addEventListener("click", () => {
-    if (playerOneChoice == 1) {
-        heading.innerHTML = "It's a Draw"
-        domUpdate("p2")
-    } else if (playerOneChoice == 2) {
-        heading.innerHTML = "Player 01 Win"
-        domUpdate("p2")
-    } else if (playerOneChoice == 3) {
-        heading.innerHTML = "Player 02 Win"
-        domUpdate("p2")
-    }
+    heading.innerHTML = findWinner(playerOneChoice, "Rock")
+    domUpdate("p2")
 })
 
 paperTwo.addEventListener("click", () => {
-    if (playerOneChoice == 1) {
-        heading.innerHTML = "Player 02 Win"
-        domUpdate("p2")
-    } else if (playerOneChoice == 2) {
-        heading.innerHTML = "It's a Draw"
-        domUpdate("p2")
-    } else if (playerOneChoice == 3) {
-        heading.innerHTML = "Player 01 Win"
-        domUpdate("p2")
-    }
+    heading.innerHTML = findWinner(playerOneChoice, "Paper")
+    domUpdate("p2")
 })
 
 scissorTwo.addEventListener("click", () => {
-    if (playerOneChoice == 1) {
-        heading.innerHTML = "Player 01 Win"
-        domUpdate("p2")
-    } else if (playerOneChoice == 2) {
-        heading.innerHTML = "Player 02 Win"
-        domUpdate("p2")
-    } else if (playerOneChoice == 3) {
-        heading.innerHTML = "It's a Draw"
-        domUpdate("p2")
-    }
+    heading.innerHTML = findWinner(playerOneChoice, "Scissor")
+    domUpdate("p2")
 })
+
+
+
+
+
+
+function computerChoice() {
+    let choiceArr = ["Rock", "Paper", "Scissor"]
+    let randomIndex = Math.floor(Math.random() * choiceArr.length)
+    return choiceArr[randomIndex]
+}
+
+
+function findWinner(pcORplayerOne, playerTwo) {
+    if (
+        pcORplayerOne == playerTwo
+    ) { return "It's a Draw" }
+
+    if (
+        (pcORplayerOne == "Rock" && playerTwo == "Paper") ||
+        (pcORplayerOne == "Paper" && playerTwo == "Scissor") ||
+        (pcORplayerOne == "Scissor" && playerTwo == "Rock")
+    ) { return "Player 02 Win" }
+
+    return "Player 01 Win"
+}
 
 
 function domUpdate(type) {
@@ -86,7 +128,17 @@ function domUpdate(type) {
         subHeading.style.display = "none"
         btnGroupOne.style.display = "none"
         btnGroupTwo.style.display = "none"
+        btnGroup.style.display = "none"
         restartBtn.style.display = "inline-block"
         restartBtn.addEventListener("click", () => location.reload())
+    }else if (type == "pc") {
+        computerSubHeading.style.display = "none"
+        heading.style.textTransform = "none"
+        subHeading.style.display = "none"
+        btnGroupOne.style.display = "none"
+        btnGroupTwo.style.display = "none"
+        btnGroup.style.display = "none"
+        pcRestartBtn.style.display = "inline-block"
+        pcRestartBtn.addEventListener("click", () => location.reload())
     }
 }

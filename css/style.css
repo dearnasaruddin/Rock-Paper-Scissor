@@ -18,8 +18,17 @@
     font-size: 26px;
     margin: 50px auto 0;
 }
-.welcome > p{
+.welcome h4 span{
+    color: #FE3E57;
+    font-size: inherit;
+}
+.welcome .footer{
+    font-weight: 300;
     margin-bottom: 20px;
+}
+.welcome .footer a{
+    text-decoration: none;
+    color: #FE3E57;
 }
 
 .welcomeBtnGroup{
@@ -30,7 +39,7 @@
     gap: 20px;
 }
 .welcomeBtnGroup .vs{
-    background: #f7f89c;
+    background: #fa7f90;
     padding: 18px 40px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -63,7 +72,6 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-
 }
 
 .twoPlayerVersion h2 {
@@ -120,8 +128,34 @@
 .btnGroupTwo {
     display: none;
 }
+
 button{
     display: none;
     margin-top: 20px;
     padding: 5px 10px;
+}
+
+
+.computerVersion {
+    height: 80vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.computerVersion h2 {
+    font-size: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.computerVersion>p {
+    font-size: 24px;
+    margin: 10px 0 30px;
+}
+
+.btnGroupTwo div {
+    background: #f1c9ff;
 }
