@@ -1,14 +1,18 @@
 let welcome = document.querySelector(".welcome")
+
 let computer = document.querySelector(".computer")
-let friend = document.querySelector(".friend")
 let computerVersion = document.querySelector(".computerVersion")
-let twoPlayerVersion = document.querySelector(".twoPlayerVersion")
 let computerHeading = document.querySelector(".computerHeading")
 let computerSubHeading = document.querySelector(".computerSubHeading")
+let pcHomeBtn = document.querySelector(".pcHomeBtn")
 let pcRestartBtn = document.querySelector(".pcRestartBtn")
+
+let friend = document.querySelector(".friend")
+let twoPlayerVersion = document.querySelector(".twoPlayerVersion")
 let heading = document.querySelector(".heading")
 let subHeading = document.querySelector(".subHeading")
-let restartBtn = document.querySelector("button")
+let homeBtn = document.querySelector(".homeBtn")
+let restartBtn = document.querySelector(".restartBtn")
 
 let btnGroup = document.querySelector(".btnGroup")
 let rock = document.querySelector(".rock")
@@ -27,14 +31,19 @@ let scissorTwo = document.querySelector(".scissorTwo")
 
 let playerOneChoice;
 
+
+
 friend.addEventListener("click", () => {
-    welcome.style.display = "none"
-    twoPlayerVersion.style.display = "flex"
+    heading.innerHTML = "Player 01"
+    subHeading.innerHTML = "Chose One"
+    domUpdate("friendBtn")
 })
+
 computer.addEventListener("click", () => {
-    welcome.style.display = "none"
-    computerVersion.style.display = "flex"
+    computerHeading.innerHTML = "Player 02"
+    computerSubHeading.innerHTML = "Guess the Computer's Choice"
     playerOneChoice = computerChoice()
+    domUpdate("computerBtn")
 })
 
 
@@ -119,7 +128,22 @@ function findWinner(pcORplayerOne, playerTwo) {
 
 
 function domUpdate(type) {
-    if (type == "p1") {
+    if (type == "friendBtn") {
+        welcome.style.display = "none"
+        twoPlayerVersion.style.display = "flex"
+        heading.style.display = "block"
+        subHeading.style.display = "block"
+        btnGroupOne.style.display = "flex"
+        homeBtn.style.display = "none"
+        restartBtn.style.display = "none"
+    } else if (type == "computerBtn") {
+        welcome.style.display = "none"
+        computerVersion.style.display = "flex"
+        computerHeading.style.display = "block"
+        computerSubHeading.style.display = "block"
+        btnGroup.style.display = "flex"
+        pcRestartBtn.style.display = "none"
+    } else if (type == "p1") {
         heading.innerHTML = "Player 02"
         btnGroupOne.style.display = "none"
         btnGroupTwo.style.display = "flex"
@@ -129,7 +153,22 @@ function domUpdate(type) {
         btnGroupTwo.style.display = "none"
         btnGroup.style.display = "none"
         restartBtn.style.display = "inline-block"
-        restartBtn.addEventListener("click", () => location.reload())
+        homeBtn.style.display = "inline-block"
+        restartBtn.addEventListener("click", () => {
+            twoPlayerVersion.style.display = "flex"
+            btnGroupOne.style.display = "flex"
+            heading.style.display = "block"
+            heading.innerHTML = "Player 01"
+            subHeading.innerHTML = "Choose One"
+            restartBtn.style.display = "none"
+            homeBtn.style.display = "none"
+        })
+        homeBtn.style.display = "inline-block"
+        homeBtn.addEventListener("click", () => {
+            welcome.style.display = "flex"
+            homeBtn.style.display = "none"
+            twoPlayerVersion.style.display = "none"
+        })
     } else if (type == "pc") {
         computerHeading.style.display = "none"
         heading.style.textTransform = "none"
@@ -138,6 +177,21 @@ function domUpdate(type) {
         btnGroupTwo.style.display = "none"
         btnGroup.style.display = "none"
         pcRestartBtn.style.display = "inline-block"
-        pcRestartBtn.addEventListener("click", () => location.reload())
+        pcRestartBtn.addEventListener("click", () => {
+            playerOneChoice = computerChoice()
+            computerVersion.style.display = "flex"
+            btnGroup.style.display = "flex"
+            computerHeading.style.display = "block"
+            computerHeading.innerHTML = "Player 02"
+            computerSubHeading.innerHTML = "Guess the Computer's Choice"
+            pcRestartBtn.style.display = "none"
+            pcHomeBtn.style.display = "none"
+        })
+        pcHomeBtn.style.display = "inline-block"
+        pcHomeBtn.addEventListener("click", () => {
+            welcome.style.display = "flex"
+            pcHomeBtn.style.display = "none"
+            computerVersion.style.display = "none"
+        })
     }
 }

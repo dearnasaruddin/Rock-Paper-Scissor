@@ -6,39 +6,54 @@
     text-align: center;
 }
 
-.welcome{
+.welcome {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.welcome h4{
-    max-width: 250px;
+@media (max-width: 500px) {
+    .welcome h4 {
+        max-width: 250px;
+    }
+}
+
+.welcome h4 {
     font-weight: 300;
     font-size: 26px;
     margin: 50px auto 0;
 }
-.welcome h4 span{
+
+.welcome h4 span {
     color: #FE3E57;
     font-size: inherit;
 }
-.welcome .footer{
+
+@media (min-width: 500px) {
+    .welcome .footer {
+        display: none;
+    }
+}
+
+.welcome .footer {
     font-weight: 300;
     margin-bottom: 20px;
 }
-.welcome .footer a{
+
+.welcome .footer a {
     text-decoration: none;
     color: #FE3E57;
 }
 
-.welcomeBtnGroup{
+.welcomeBtnGroup {
     display: flex;
     height: 68vh;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
-.welcomeBtnGroup .vs{
+
+.welcomeBtnGroup .vs {
     background: #fa7f90;
     padding: 18px 40px;
     -webkit-border-radius: 20px;
@@ -53,13 +68,16 @@
 .welcomeBtnGroup div:hover i {
     color: gray;
 }
+
 .welcomeBtnGroup div:hover p {
     color: gray;
 }
-.welcomeBtnGroup .vs i{
+
+.welcomeBtnGroup .vs i {
     font-size: 40px;
 }
-.welcomeBtnGroup .vs p{
+
+.welcomeBtnGroup .vs p {
     font-weight: 300;
     font-size: 20px;
     margin-top: 10px;
@@ -129,7 +147,25 @@
     display: none;
 }
 
-button{
+.pcRestartBtn {
+    display: none;
+    margin-top: 20px;
+    padding: 5px 10px;
+}
+
+.restartBtn {
+    display: none;
+    margin-top: 20px;
+    padding: 5px 10px;
+}
+
+.homeBtn {
+    display: none;
+    margin-top: 20px;
+    padding: 5px 10px;
+}
+
+.pcHomeBtn {
     display: none;
     margin-top: 20px;
     padding: 5px 10px;
